@@ -1,0 +1,17 @@
+.edit__window {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background-color: white;
+  box-shadow: 0 0 25px rgb(black, 0.15);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .edit__window {
+    min-height: 322px;
+    max-width: 282px;
+
+  }
+}

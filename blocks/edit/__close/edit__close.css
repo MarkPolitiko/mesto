@@ -1,0 +1,29 @@
+.edit__close {
+  background-image: url(../../../images/Close\ Icon.svg);
+  background-size: contain;
+  background-color: transparent;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  border: none;
+  padding: 0;
+  outline: none;
+  top: -40px;
+  right: -40px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.edit__close:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 600px) {
+  .edit__close {
+    width: 20px;
+    height: 20px;
+    right: 0;
+    top: -36px;
+  }
+}
