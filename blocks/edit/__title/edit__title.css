@@ -11,8 +11,10 @@
 }
 
 @media screen and (max-width: 600px) {
-  .edit__title  {
-      font-size: 18px;
-      padding: 25px 0 75px;
+  .edit__title {
+    font-size: 18px;
+    padding: 25px 0 75px;
   }
 }
+
+/*откорректирован стиль написания CSS*/

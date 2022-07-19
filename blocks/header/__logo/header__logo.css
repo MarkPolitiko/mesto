@@ -4,9 +4,9 @@
 
 .header__logo:hover {
   cursor: pointer;
-  opacity: 0.6;
-  transition: 0.3s;
 }
+
+/* удален opacity, так как его нет в ТЗ */
 
 @media screen and (max-width: 660px) {
   .header__logo {

@@ -8,6 +8,8 @@
 
 @media screen and (max-width: 720px) {
   .profile__image {
-   margin: 0 auto;
+    margin: 0 auto;
   }
 }
+
+/*откорректирован стиль написания CSS*/

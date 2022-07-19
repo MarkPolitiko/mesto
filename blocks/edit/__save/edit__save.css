@@ -20,15 +20,19 @@
 }
 
 .edit__save:hover {
-  opacity: 0.6;
+  opacity: 0.8;
   transition: 0.3s;
 }
 
+/* изменен opacity в соответствии с ТЗ */
+
 @media screen and (max-width: 600px) {
   .edit__save {
-      font-size: 14px;
-      min-height: 46px;
-      margin-bottom: 25px;
-      max-width: 238px;
+    font-size: 14px;
+    min-height: 46px;
+    margin-bottom: 25px;
+    max-width: 238px;
   }
 }
+
+/*откорректирован стиль написания CSS*/
