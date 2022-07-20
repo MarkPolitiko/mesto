@@ -1,6 +1,6 @@
 .profile {
   max-width: 880px;
-  margin: 0 auto 47.25px;
+  margin: 0 auto 54px;
   display: flex;
 }
 
@@ -12,13 +12,6 @@
   }
 }
 
-@media screen and (max-width: 660px) {
-  .profile {
-    margin-left: 19px;
-    margin-right: 19px;
-  }
-}
-
 @media screen and (max-width: 720px) {
   .profile {
     flex-wrap: wrap;
@@ -27,9 +20,9 @@
   }
 }
 
-@media screen and (max-width: 440px) {
-  .profile__description {
-    flex-direction: column;
-    justify-content: center;
+@media screen and (max-width: 660px) {
+  .profile {
+    margin-left: 19px;
+    margin-right: 19px;
   }
 }

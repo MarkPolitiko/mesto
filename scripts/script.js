@@ -1,5 +1,5 @@
 let profileOpenButton = document.querySelector('.profile__edit-button');  /* изменено имя переменной */
-let profileButtonClose = document.querySelector('.edit__close');
+let profileButtonClose = document.querySelector('.edit__close-button');
 let profileForm = document.querySelector('.edit__form');
 let profileButtonEdit = document.querySelector('.edit');
 let profileName = document.querySelector('.profile__title');
@@ -13,8 +13,8 @@ function editShow() {
   profileButtonEdit.classList.add('edit_show');
 }
 
-function formSaveChanges(push) {
-  push.preventDefault();
+function formSaveChanges(evt) {
+  evt.preventDefault();
   profileName.textContent = profileInputName.value;
   profileDescription.textContent = profileInputDescription.value;
   editClose();

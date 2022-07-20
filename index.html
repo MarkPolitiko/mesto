@@ -11,7 +11,6 @@
     <div class="page">
       <header class="header">
         <img src="./images/logo.svg" class="header__logo" alt="Место Россия" />
-        <div class="header__line"></div>
       </header>
 
       <main class="content">
@@ -23,14 +22,22 @@
           />
           <div class="profile__description">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="Редактировать"
+            ></button>
             <p class="profile__subtitle">Исследователь океана</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="Добавить"
+          ></button>
         </section>
 
         <section class="elements">
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/karachaevsk.jpg"
               class="elements__image"
@@ -38,11 +45,15 @@
             />
             <div class="elements__description">
               <h2 class="elements__title">Карачаевск</h2>
-              <button class="elements__like" type="button"></button>
+              <button
+                class="elements__like-button elements__like-button_active"
+                type="button"
+                aria-label="Нравится"
+              ></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/elbrus.png"
               class="elements__image"
@@ -50,11 +61,15 @@
             />
             <div class="elements__description">
               <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like" type="button"></button>
+              <button
+                class="elements__like-button elements__like-button_active"
+                type="button"
+                aria-label="Нравится"
+              ></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/dombai.jpg"
               class="elements__image"
@@ -62,11 +77,15 @@
             />
             <div class="elements__description">
               <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like" type="button"></button>
+              <button
+                class="elements__like-button elements__like-button_active"
+                type="button"
+                aria-label="Нравится"
+              ></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/elbrus.png"
               class="elements__image"
@@ -74,11 +93,15 @@
             />
             <div class="elements__description">
               <h2 class="elements__title">Гора Эльбрус</h2>
-              <button class="elements__like" type="button"></button>
+              <button
+                class="elements__like-button elements__like-button_active"
+                type="button"
+                aria-label="Нравится"
+              ></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/dombai.jpg"
               class="elements__image"
@@ -86,11 +109,15 @@
             />
             <div class="elements__description">
               <h2 class="elements__title">Домбай</h2>
-              <button class="elements__like" type="button"></button>
+              <button
+                class="elements__like-button elements__like-button_active"
+                type="button"
+                aria-label="Нравится"
+              ></button>
             </div>
-          </div>
+          </article>
 
-          <div class="elements__card">
+          <article class="elements__card">
             <img
               src="./images/karachaevsk.jpg"
               class="elements__image"
@@ -98,20 +125,24 @@
             />
             <div class="elements__description">
               <h2 class="elements__title">Карачаево-Черкессия</h2>
-              <button class="elements__like" type="button"></button>
+              <button
+                class="elements__like-button elements__like-button_active"
+                type="button"
+                aria-label="Нравится"
+              ></button>
             </div>
-          </div>
+          </article>
         </section>
       </main>
 
       <footer class="footer">
-        <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+        <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
 
       <div class="edit">
         <div class="edit__window">
+          <h2 class="edit__title">Редактировать профиль</h2>
           <form class="edit__form" name="edit_profile_change">
-            <h2 class="edit__title">Редактировать профиль</h2>
             <input
               class="edit__input edit__input_type_name"
               name="name"
@@ -122,9 +153,19 @@
               name="description"
               type="text"
             />
-            <button class="edit__save" type="submit">Сохранить</button>
+            <button
+              class="edit__save-button"
+              type="submit"
+              aria-label="Сохранить"
+            >
+              Сохранить
+            </button>
           </form>
-          <button class="edit__close" type="button"></button>
+          <button
+            class="edit__close-button"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
         </div>
       </div>
     </div>

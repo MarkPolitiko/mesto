@@ -2,12 +2,6 @@
   max-width: 142px;
 }
 
-.header__logo:hover {
-  cursor: pointer;
-}
-
-/* удален opacity, так как его нет в ТЗ */
-
 @media screen and (max-width: 660px) {
   .header__logo {
     max-width: 103.74px;

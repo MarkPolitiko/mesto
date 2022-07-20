@@ -1,4 +1,4 @@
-.edit__save {
+.edit__save-button {
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
@@ -19,7 +19,7 @@
   cursor: pointer;
 }
 
-.edit__save:hover {
+.edit__save-button:hover {
   opacity: 0.8;
   transition: 0.3s;
 }
@@ -27,7 +27,7 @@
 /* изменен opacity в соответствии с ТЗ */
 
 @media screen and (max-width: 600px) {
-  .edit__save {
+  .edit__save-button {
     font-size: 14px;
     min-height: 46px;
     margin-bottom: 25px;

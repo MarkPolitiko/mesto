@@ -10,7 +10,6 @@
 
 @media screen and (max-width: 600px) {
   .edit__window {
-    min-height: 322px;
     max-width: 282px;
   }
 

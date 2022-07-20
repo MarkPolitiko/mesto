@@ -4,7 +4,6 @@
 @import url(../blocks/page/page.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__image/profile__image.css);
 @import url(../blocks/profile/__description/profile__description.css);
@@ -16,15 +15,16 @@
 @import url(../blocks/elements/__card/elements__card.css);
 @import url(../blocks/elements/__description/elements__description.css);
 @import url(../blocks/elements/__image/elements__image.css);
-@import url(../blocks/elements/__like/elements__like.css);
+@import url(../blocks/elements/__like-button/elements__like-button.css);
+@import url(../blocks/elements/__like-button/_active/elements__like-button_active.css);
 @import url(../blocks/elements/__title/elements__title.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/edit/edit.css);
 @import url(../blocks/edit/_show/edit_show.css);
-@import url(../blocks/edit/__close/edit__close.css);
+@import url(../blocks/edit/__close-button/edit__close-button.css);
 @import url(../blocks/edit/__form/edit__form.css);
 @import url(../blocks/edit/__input/edit__input.css);
-@import url(../blocks/edit/__save/edit__save.css);
+@import url(../blocks/edit/__save-button/edit__save-button.css);
 @import url(../blocks/edit/__title/edit__title.css);
 @import url(../blocks/edit/__window/edit__window.css);

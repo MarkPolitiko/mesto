@@ -1,18 +1,30 @@
 .profile__description {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
+  gap: 3px;
 }
 
 /*откорректирован стиль написания CSS*/
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 800px) {
   .profile__description {
-    margin-left: calc(100% - (19px / 2));
-    margin-right: calc(100% - (19px / 2));
     margin-bottom: 36px;
     min-width: 220px;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .profile__description {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .profile__description {
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 30px;
   }
 }

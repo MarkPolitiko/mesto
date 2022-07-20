@@ -28,3 +28,9 @@
     background-size: 7.5px;
   }
 }
+
+@media screen and (max-width: 320px) {
+  .profile__edit-button {
+    align-items: baseline;
+  }
+}
