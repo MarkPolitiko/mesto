@@ -15,12 +15,12 @@
 
 /*откорректирован стиль написания CSS*/
 
-.edit__input:last-child {
+.edit__input:nth-of-type(2) {
   margin-bottom: 48px;
 }
 
 @media screen and (max-width: 600px) {
-  .edit__input:last-child {
-    margin-bottom: 45px;
+  .edit__input:nth-of-type(2) {
+    margin-bottom: 38px;
   }
 }
