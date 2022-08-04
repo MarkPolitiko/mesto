@@ -8,7 +8,6 @@ const profileInputName = document.querySelector('.edit__input_type_name');
 const profileInputDescription = document.querySelector('.edit__input_type_description');
 
 const profileAddButton = document.querySelector('.profile__add-button');
-const addWindowShow = document.querySelector('.add__window');
 const addButtonClose = document.querySelector('.add__close-button');
 const addForm = document.querySelector('.add__form');
 const toAdd = document.querySelector('.add');
@@ -134,11 +133,6 @@ function submitAddElement (evt) {
   addClose(evtTarget);
   evt.target.reset();
 }
-
-profileAddButton.addEventListener('click', () => {
-  addShow(addWindowShow);
-});
-
 
 function showPopup(popupOpen) {
   popupOpen.classList.add('popup_show');
