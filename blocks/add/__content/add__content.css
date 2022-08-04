@@ -1,0 +1,15 @@
+.add__content {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 600px) {
+  .add__content {
+    max-width: 282px;
+  }
+}

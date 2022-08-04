@@ -1,4 +1,4 @@
-.edit {
+.add {
   position: fixed;
   top: 0;
   right: 0;
@@ -8,8 +8,8 @@
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  z-index: 1;
   visibility: hidden;
   opacity: 0;
   transition: all .5s ease;
+  z-index: 1;
 }
