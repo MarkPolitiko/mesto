@@ -1,5 +1,5 @@
 const profileEditButton = document.querySelector('.profile__edit-button');
-const profileForm = document.querySelector('.popup_edit-profile');
+const profileForm = document.querySelector('.popup__form_edit_profile');
 const popupProfileEditWindow = document.querySelector('.popup_open_edit-window');
 const profileName = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__subtitle');
@@ -7,7 +7,7 @@ const profileInputName = document.querySelector('.popup__input_type_name');
 const profileInputDescription = document.querySelector('.popup__input_type_description');
 
 const profileAddButton = document.querySelector('.profile__add-button');
-const popupAddForm = document.querySelector('.popup_form_add-element');
+const popupAddForm = document.querySelector('.popup__form_add_element');
 const popupAddElement = document.querySelector('.popup_open_add-window');
 const popupAddElementNameInput = document.querySelector('.popup__input_type_place'); // название фото
 const popupAddElementLinkInput = document.querySelector('.popup__input_type_link'); // ссылка на фото
