@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <script src="./scripts/script.js" defer></script>
     <title>Mesto Russia</title>
   </head>
   <body class="body">
@@ -40,70 +41,74 @@
           ></button>
         </section>
 
-        <section class="elements">
-        </section>
+        <section class="elements"></section>
       </main>
 
       <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
       </footer>
 
-      <div class="edit">
-        <div class="edit__window">
-          <h2 class="edit__title">Редактировать профиль</h2>
-          <form class="edit__form" name="edit_profile_change">
+      <div class="popup popup_open_edit-window">
+        <div class="popup__content">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <form
+            class="popup__form popup_edit-profile"
+            name="edit-profile_change"
+          >
             <input
-              class="edit__input edit__input_type_name"
+              class="popup__input popup__input_type_name"
               name="name"
               type="text"
+              required
             />
             <input
-              class="edit__input edit__input_type_description"
+              class="popup__input popup__input_type_description"
               name="description"
               type="text"
+              required
             />
-            <button
-              class="edit__save-button"
-              type="submit"
-              aria-label="Сохранить"
-            >
+            <button class="popup__save-button" type="submit">
+              <!--Удалил aria-label-->
               Сохранить
             </button>
           </form>
           <button
-            class="edit__close-button"
+            class="popup__close-button"
             type="button"
             aria-label="Закрыть"
           ></button>
         </div>
       </div>
 
-      <div class="add">
-        <div class="add__content">
-          <h2 class="add__title">Новое место</h2>
-          <form class="add__form" name="add_profile_change">
+      <div class="popup popup_open_add-window">
+        <div class="popup__content">
+          <h2 class="popup__title">Новое место</h2>
+          <form
+            class="popup__form popup_form_add-element"
+            name="add-element_change"
+          >
             <input
-              class="add__input add__input_type_name"
+              class="popup__input popup__input_type_place"
               name="name"
               type="text"
               placeholder="Название"
+              required
             />
             <input
-              class="add__input add__input_type_link"
+              class="popup__input popup__input_type_link"
               name="description"
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
+              required
             />
-            <button
-              class="add__save-button"
-              type="submit"
-              aria-label="Создать"
-            >
+            <!--Заменил type на url-->
+            <button class="popup__save-button" type="submit">
+              <!--Удалил aria-label-->
               Создать
             </button>
           </form>
           <button
-            class="add__close-button"
+            class="popup__close-button"
             type="button"
             aria-label="Закрыть"
           ></button>
@@ -111,34 +116,33 @@
       </div>
 
       <div class="popup popup_image_open">
-        <div class="popup__content">
-          <button class="popup__close-button" type="button"></button>
-          <img src="#" class="popup__image" alt>
+        <div class="popup__content popup__content_image-opened">
+          <button
+            class="popup__close-button"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
+          <img src="#" class="popup__image" alt />
           <figcaption class="popup__caption"></figcaption>
         </div>
       </div>
-
     </div>
-
-    <script src="./scripts/script.js" defer></script>
 
     <template id="elements-template">
       <article class="elements__card">
-        <img
-          src="#"
-          class="elements__image"
-          alt
-        />
-        <button class="elements__delete-button"></button>
+        <img src="#" class="elements__image" alt="" />
+        <button class="elements__delete-button" aria-label="Удалить"></button>
+        <!--Добавил aria-label-->
         <div class="elements__description">
           <h2 class="elements__title"></h2>
           <button
             class="elements__like-button"
             type="button"
+            aria-label="Нравится"
           ></button>
+          <!--Добавил aria-label-->
         </div>
       </article>
     </template>
-
   </body>
 </html>
