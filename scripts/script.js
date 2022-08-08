@@ -26,7 +26,7 @@ const popupCaption = document.querySelector('.popup__caption');
 function showPopupProfile() { // форма для изменения профиля
   profileInputName.value = profileName.textContent;
   profileInputDescription.value = profileDescription.textContent;
-  popupProfileEditWindow.classList.add('popup_show');
+  showPopup(popupProfileEditWindow)
 }
 
 function submitFormChanges(evt) { // сохранение изменений профиля
@@ -68,13 +68,13 @@ function addInitialElements() {
   initialCards.forEach(item => {
     const elementName = item.name;
     const elementLink = item.link;
-    elements.prepend(createInitial(elementName, elementLink));
+    elements.prepend(createCard(elementName, elementLink));
   })
 }
 
 addInitialElements();
 
-function createInitial(elementName, elementLink) {
+function createCard(elementName, elementLink) {
   const newCard = elementsTemplate.querySelector('.elements__card').cloneNode(true);
   const newElementTitle = newCard.querySelector('.elements__title');
   const newElementImage = newCard.querySelector('.elements__image');
@@ -85,8 +85,8 @@ function createInitial(elementName, elementLink) {
   newElementImage.setAttribute('src', elementLink);
   newElementImage.setAttribute('alt', elementName);
 
-  likeButton.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('elements__like-button_active');
+  likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('elements__like-button_active');
   })
 
   newElementDeleteButton.addEventListener('click', (evt) => {
@@ -108,9 +108,7 @@ function createInitial(elementName, elementLink) {
 function submitAddElementForm (evt) {
   evt.preventDefault();
   const evtTarget = evt.target.closest('.popup');
-  if (popupAddElementNameInput.value && popupAddElementLinkInput.value) {
-  elements.prepend(createInitial (popupAddElementNameInput.value, popupAddElementLinkInput.value))
-  }
+  elements.prepend(createCard (popupAddElementNameInput.value, popupAddElementLinkInput.value))
   closePopup(evtTarget);
   evt.target.reset();
 }
@@ -123,7 +121,7 @@ function closePopup(popupClose) {
   popupClose.classList.remove('popup_show');
 }
 
-function initializeButtonsListeners() {
+function initializeCloseButtonsListeners() {
   popupButtonsClose.forEach((item) => {
     item.addEventListener('click', (evt) => {
         const evtTarget = evt.target.closest('.popup');
@@ -132,7 +130,7 @@ function initializeButtonsListeners() {
   })
 }
 
-initializeButtonsListeners();
+initializeCloseButtonsListeners();
 
 profileEditButton.addEventListener('click', showPopupProfile);
 profileForm.addEventListener('submit', submitFormChanges);
