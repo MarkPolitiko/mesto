@@ -5,7 +5,7 @@
   text-align: center;
   color: #ffffff;
   border-radius: 2px;
-  background-color: black;
+  background-color: #000;
   min-height: 50px;
   width: 100%;
   padding: 0;
@@ -17,6 +17,13 @@
   box-sizing: border-box;
   outline: none;
   cursor: pointer;
+}
+
+.popup__save-button:disabled {
+  border: 1px solid black;
+  background-color: transparent;
+  color: black;
+  opacity: .2;
 }
 
 .popup__save-button:hover {

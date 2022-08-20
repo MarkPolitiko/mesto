@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./scripts/script.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
     <title>Mesto Russia</title>
   </head>
   <body class="body">
@@ -50,27 +51,45 @@
 
       <div class="popup popup_open_edit-window">
         <div class="popup__content">
-          <h2 class="popup__title">Редактировать профиль</h2>
+          <legend class="popup__title">Редактировать профиль</legend>
           <form
             class="popup__form popup__form_edit_profile"
-            name="edit-profile_change"
+            name="account"
+            novalidate
           >
-            <input
-              class="popup__input popup__input_type_name"
-              name="name"
-              type="text"
-              required
-            />
-            <input
-              class="popup__input popup__input_type_description"
-              name="description"
-              type="text"
-              required
-            />
-            <button class="popup__save-button" type="submit">
-              <!--Удалил aria-label-->
-              Сохранить
-            </button>
+            <div class="popup__input-container">
+              <input
+                class="popup__input popup__input_type_name"
+                id="name-input"
+                name="name"
+                type="text"
+                placeholder="Имя"
+                minlength="2"
+                maxlength="40"
+                title="Длина поля должна быть 2 и более символов и менее или равно 40"
+                required
+              />
+              <span
+                class="popup__input-error name-input-error popup__input-error_field_name"
+              ></span>
+            </div>
+            <div class="popup__input-container">
+              <input
+                class="popup__input popup__input_type_description"
+                id="description-input"
+                name="description"
+                type="text"
+                placeholder="Род деятельности"
+                minlength="2"
+                maxlength="200"
+                title="Длина поля должна быть 2 и более символов и менее или равно 200"
+                required
+              />
+              <span
+                class="popup__input-error description-input-error popup__input-error_field_description"
+              ></span>
+            </div>
+            <button class="popup__save-button" type="submit">Сохранить</button>
           </form>
           <button
             class="popup__close-button"
@@ -82,30 +101,42 @@
 
       <div class="popup popup_open_add-window">
         <div class="popup__content">
-          <h2 class="popup__title">Новое место</h2>
+          <legend class="popup__title">Новое место</legend>
           <form
             class="popup__form popup__form_add_element"
-            name="add-element_change"
+            name="account"
+            novalidate
           >
-            <input
-              class="popup__input popup__input_type_place"
-              name="name"
-              type="text"
-              placeholder="Название"
-              required
-            />
-            <input
-              class="popup__input popup__input_type_link"
-              name="description"
-              type="url"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <!--Заменил type на url-->
-            <button class="popup__save-button" type="submit">
-              <!--Удалил aria-label-->
-              Создать
-            </button>
+            <div class="popup__input-container">
+              <input
+                class="popup__input popup__input_type_place"
+                id="place-input"
+                name="name"
+                type="text"
+                placeholder="Название"
+                minlength="2"
+                maxlength="30"
+                title="Длина поля должна быть 2 и более символов и менее или равно 30"
+                required
+              />
+              <span
+                class="popup__input-error place-input-error popup__input-error_field_name"
+              ></span>
+            </div>
+            <div class="popup__input-container">
+              <input
+                class="popup__input popup__input_type_link"
+                id="link-input"
+                name="link"
+                type="url"
+                placeholder="Ссылка на картинку"
+                required
+              />
+              <span
+                class="popup__input-error link-input-error popup__input-error_field_link"
+              ></span>
+            </div>
+            <button class="popup__save-button" type="submit">Создать</button>
           </form>
           <button
             class="popup__close-button"
@@ -132,7 +163,6 @@
       <article class="elements__card">
         <img src="#" class="elements__image" alt="" />
         <button class="elements__delete-button" aria-label="Удалить"></button>
-        <!--Добавил aria-label-->
         <div class="elements__description">
           <h2 class="elements__title"></h2>
           <button
@@ -140,7 +170,6 @@
             type="button"
             aria-label="Нравится"
           ></button>
-          <!--Добавил aria-label-->
         </div>
       </article>
     </template>
