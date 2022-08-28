@@ -106,49 +106,38 @@ function submitAddElementForm(evt) {
   evt.preventDefault();
   formAddElement.setAttribute("disable", "disable");
   const evtTarget = evt.target.closest(".popup");
-  if (popupAddElementNameInput.value && popupAddElementLinkInput.value) {
-    element.prepend(createCard(popupAddElementNameInput.value, popupAddElementLinkInput.value));
-  }
+  element.prepend(createCard(popupAddElementNameInput.value, popupAddElementLinkInput.value));
   closePopup(evtTarget);
   evt.target.reset();
 }
 
-function showPopup(popupOpen, ) {
-  formAddElement.reset();
-  formAddElement.setAttribute("disable", "disable");
+function showPopup(popupOpen) {
   popupOpen.classList.add("popup_show");
   document.addEventListener("keydown", closePopupByEsc);
-  document.addEventListener("click", closePopupByOverlay);
+  document.addEventListener("click", () => closePopupByOverlay(popupOpen));
 }
 
 function closePopup(popupClose) {
   popupClose.classList.remove("popup_show");
   document.removeEventListener("keydown", closePopupByEsc);
-  document.removeEventListener("click", closePopupByOverlay);
+  document.removeEventListener("click", () => closePopupByOverlay(popupClose));
 }
 
-//закрытие через Esc
-function closePopupByEsc () {
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      const popup = document.querySelectorAll(".popup");
-      popup.forEach((popup) => {
-        closePopup(popup);
-      });
-    }
-  });
+// закрытие через Esc
+function closePopupByEsc(evt) {
+  if (evt.key === "Escape") {
+    const popup = document.querySelectorAll(".popup");
+    popup.forEach((popup) => {
+      closePopup(popup);
+    });
+  }
 }
 
 //закрытие через click вне формы
-function closePopupByOverlay () {
-  document.addEventListener("click", function(evt) {
-    const popups = Array.from(document.querySelectorAll('.popup_show'));
-      if (evt.target.classList.contains('popup_show')) {
-        popups.forEach((popup) => {
-          closePopup(popup);
-        });
-      };
-  });
+function closePopupByOverlay(popupEl) {
+  if (popupEl.classList.contains('popup_show')) {
+    closePopup(popupEl);
+  };
 }
 
 function initializeCloseButtonsListeners() {
@@ -162,14 +151,13 @@ function initializeCloseButtonsListeners() {
 
 initializeCloseButtonsListeners();
 
-
 profileEditButton.addEventListener("click", showPopupProfile);
 profileForm.addEventListener("submit", submitFormChanges);
 
 profileAddButton.addEventListener("click", () => {
+  formAddElement.reset();
+  formAddElement.setAttribute("disable", "disable");
   showPopup(popupAddElement);
 });
 
 popupAddForm.addEventListener("submit", submitAddElementForm);
-
-
