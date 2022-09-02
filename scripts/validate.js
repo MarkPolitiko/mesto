@@ -48,11 +48,38 @@ const setEventListeners = (formElement, config) => {
   });
 };
 
-const enableValidation = (config) => {
-  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  const enableValidation = (config) => {
+
   formList.forEach((formElement) => {
     setEventListeners(formElement, config);
   });
 };
 
 enableValidation(config);
+
+const resetForm = (form) => {
+  form.reset();
+}
+
+const resetErrorMessages = (errorList, inputList) => {
+  errorList.forEach((errorElement) => {
+    errorElement.textContent = "";
+  })
+  inputList.forEach((formInput) => {
+    formInput.classList.remove('popup__input_type_error');
+  })
+}
+
+const resetWholePopup = (popup) => {
+  const submitButton = popup.querySelector('.popup__save-button');
+  const form = popup.querySelector('.popup__form');
+
+  if (popup.querySelector('.popup__form')) {
+    const errorList = Array.from(form.querySelectorAll('.popup__input-error'));
+    const inputList = Array.from(form.querySelectorAll('.popup__input'));
+    resetErrorMessages(errorList, inputList);
+    resetForm(form);
+
+    toggleButtonState(inputList, submitButton, 'popup__save-button_inactive');
+  }
+}
