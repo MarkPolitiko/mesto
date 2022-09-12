@@ -142,35 +142,6 @@ function initializeCloseButtonsListeners() {
 
 initializeCloseButtonsListeners();
 
-
-/* const resetForm = (form) => {
-  form.reset();
-} */
-
-/* const resetErrorMessages = (errorList, inputList, selectors) => {
-  errorList.forEach((errorElement) => {
-    errorElement.textContent = "";
-  })
-  inputList.forEach((formInput) => {
-    formInput.classList.remove(selectors.inputErrorClass);
-  })
-} */
-
-/* const resetWholePopup = (popup, selectors) => {
-  const submitButton = popup.querySelector(selectors.submitButtonSelector);
-  const form = popup.querySelector(selectors.formSelector); */
-
-/*   if (popup.querySelector(selectors.formSelector)) {
-    /* const errorList = Array.from(form.querySelectorAll(selectors.errorClass));
-    const inputList = Array.from(form.querySelectorAll(selectors.inputSelector));
-    resetErrorMessages(errorList, inputList); */
-    //hideInputError(formElement, inputElement, selectors)
-    //resetForm(form);
-
-    //toggleButtonState(inputList, /* submitButton,  */selectors);
-//  }
-//}; */
-
 profileEditButton.addEventListener("click", showPopupProfile);
 profileForm.addEventListener("submit", submitFormChanges);
 

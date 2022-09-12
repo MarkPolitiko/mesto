@@ -1,5 +1,6 @@
 .popup__content_image-opened {
   background-color: transparent;
   box-shadow: none;
-  border-radius: 0; 
+  border-radius: 0;
+  position: relative;
 }
