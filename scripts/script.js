@@ -30,18 +30,7 @@ const popupCaption = document.querySelector(".popup__caption");
 const profileForm = document.querySelector(".popup__form_edit_profile");
 const popupAddForm = document.querySelector(".popup__form_add_element");
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error'
-};
-
 const formAddElement = document.forms.account;
-const formList = Array.from(document.querySelectorAll(config.formSelector));
-
 
 // открытие формы для изменения профиля
 function showPopupProfile() {
@@ -53,10 +42,9 @@ function showPopupProfile() {
 // сохранение изменений профиля
 function submitFormChanges(evt) {
   evt.preventDefault();
-  const evtTarget = evt.target.closest(".popup");
   profileName.textContent = profileInputName.value;
   profileDescription.textContent = profileInputDescription.value;
-  closePopup(evtTarget);
+  closePopup(popupProfileEditWindow);
 }
 
 // добавление массива приложенных карточек
@@ -110,20 +98,19 @@ function createCard(elementName, elementLink) {
 function submitAddElementForm(evt) {
   evt.preventDefault();
   formAddElement.setAttribute("disabled", "disabled");
-  const evtTarget = evt.target.closest(".popup");
   cardsContainer.prepend(createCard(popupAddElementNameInput.value, popupAddElementLinkInput.value));
-  closePopup(evtTarget);
+  evt.target.reset();
+  closePopup(popupAddElement);
 }
 
 function showPopup(popup) {
   popup.classList.add("popup_show");
   document.addEventListener("keydown", closePopupByEsc);
-  document.addEventListener("click", closePopupByOverlay);
+  popup.addEventListener("mousedown", closePopupByOverlay);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_show");
-  resetWholePopup(popup);
   document.removeEventListener("keydown", closePopupByEsc);
   document.removeEventListener("click", closePopupByOverlay);
 }
@@ -131,20 +118,16 @@ function closePopup(popup) {
 //закрытие через Esc
 function closePopupByEsc (evt) {
   if (evt.key === "Escape") {
-    const popup = document.querySelectorAll(".popup");
-    popup.forEach((popup) => {
-      closePopup(popup);
-    });
+    const popup = document.querySelector('.popup_show');
+    closePopup(popup);
   }
 }
 
 //закрытие через click вне формы
 function closePopupByOverlay (evt) {
-  const popups = Array.from(document.querySelectorAll('.popup_show'));
   if (evt.target.classList.contains("popup_show")) {
-    popups.forEach((popup) => {
-      closePopup(popup);
-    });
+    const popup = document.querySelector('.popup_show');
+    closePopup(popup);
   };
 }
 
@@ -158,6 +141,35 @@ function initializeCloseButtonsListeners() {
 }
 
 initializeCloseButtonsListeners();
+
+
+/* const resetForm = (form) => {
+  form.reset();
+} */
+
+/* const resetErrorMessages = (errorList, inputList, selectors) => {
+  errorList.forEach((errorElement) => {
+    errorElement.textContent = "";
+  })
+  inputList.forEach((formInput) => {
+    formInput.classList.remove(selectors.inputErrorClass);
+  })
+} */
+
+/* const resetWholePopup = (popup, selectors) => {
+  const submitButton = popup.querySelector(selectors.submitButtonSelector);
+  const form = popup.querySelector(selectors.formSelector); */
+
+/*   if (popup.querySelector(selectors.formSelector)) {
+    /* const errorList = Array.from(form.querySelectorAll(selectors.errorClass));
+    const inputList = Array.from(form.querySelectorAll(selectors.inputSelector));
+    resetErrorMessages(errorList, inputList); */
+    //hideInputError(formElement, inputElement, selectors)
+    //resetForm(form);
+
+    //toggleButtonState(inputList, /* submitButton,  */selectors);
+//  }
+//}; */
 
 profileEditButton.addEventListener("click", showPopupProfile);
 profileForm.addEventListener("submit", submitFormChanges);

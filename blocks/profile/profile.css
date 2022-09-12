@@ -1,5 +1,5 @@
 .profile {
-  max-width: 880px;
+  max-width: 88.125%;
   margin: 0 auto 51px;
   display: flex;
   justify-content: space-between;
@@ -7,9 +7,9 @@
   box-sizing: border-box;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1044px) {
   .profile {
-    max-width: 700px;
+    max-width: 85%;
   }
 }
 
