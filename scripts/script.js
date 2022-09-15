@@ -27,6 +27,9 @@ const popupImage = document.querySelector(".popup__image");
 const popupOpenImage = document.querySelector(".popup_image_open");
 const popupCaption = document.querySelector(".popup__caption");
 
+const popupButtonEdit = document.querySelector(".popup__save-button_edit");
+const popupButtonAdd = document.querySelector(".popup__save-button_add");
+
 const profileForm = document.querySelector(".popup__form_edit_profile");
 const popupAddForm = document.querySelector(".popup__form_add_element");
 
@@ -37,6 +40,7 @@ function showPopupProfile() {
   profileInputName.value = profileName.textContent;
   profileInputDescription.value = profileDescription.textContent;
   showPopup(popupProfileEditWindow);
+  removeButtonDisabled(popupButtonEdit, validationConfig);
 }
 
 // сохранение изменений профиля
@@ -97,10 +101,10 @@ function createCard(elementName, elementLink) {
 
 function submitAddElementForm(evt) {
   evt.preventDefault();
-  formAddElement.setAttribute("disabled", "disabled");
   cardsContainer.prepend(createCard(popupAddElementNameInput.value, popupAddElementLinkInput.value));
   evt.target.reset();
   closePopup(popupAddElement);
+  setButtonDisabled(popupButtonAdd, validationConfig);
 }
 
 function showPopup(popup) {
@@ -112,7 +116,7 @@ function showPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove("popup_show");
   document.removeEventListener("keydown", closePopupByEsc);
-  document.removeEventListener("click", closePopupByOverlay);
+  popup.removeEventListener("mousedown", closePopupByOverlay);
 }
 
 //закрытие через Esc
@@ -143,7 +147,10 @@ function initializeCloseButtonsListeners() {
 initializeCloseButtonsListeners();
 
 profileEditButton.addEventListener("click", showPopupProfile);
+
 profileForm.addEventListener("submit", submitFormChanges);
+
+const popupFormAddElement = document.querySelector(".popup__form_add_element");
 
 profileAddButton.addEventListener("click", () => {
   showPopup(popupAddElement);
