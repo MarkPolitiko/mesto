@@ -1,3 +1,7 @@
+import { initialCards } from "./cards.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const profileEditButton = document.querySelector(".profile__edit-button");
 
 const popupProfileEditWindow = document.querySelector(
@@ -19,7 +23,8 @@ const popupAddElementLinkInput = document.querySelector(
   ".popup__input_type_link"
 ); // ссылка на фото
 
-const elementsTemplate = document.querySelector("#elements-template").content;
+//const elementsTemplate = document.querySelector("#elements-template").content;
+
 const cardsContainer = document.querySelector(".elements");
 
 const popupButtonsClose = document.querySelectorAll(".popup__close-button");
@@ -33,7 +38,18 @@ const popupButtonAdd = document.querySelector(".popup__save-button_add");
 const profileForm = document.querySelector(".popup__form_edit_profile");
 const popupAddForm = document.querySelector(".popup__form_add_element");
 
-const formAddElement = document.forms.account;
+//const formAddElement = document.forms.account;
+
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__input-error'
+};
+
+export {popupImage, popupOpenImage, popupCaption};
 
 // открытие формы для изменения профиля
 function showPopupProfile() {
@@ -63,41 +79,8 @@ function addInitialElements() {
 addInitialElements();
 
 // создание новой карточки
-function createCard(elementName, elementLink) {
-  const newCard = elementsTemplate
-    .querySelector(".elements__card")
-    .cloneNode(true);
-  const newElementTitle = newCard.querySelector(".elements__title");
-  const newElementImage = newCard.querySelector(".elements__image");
-  const likeButton = newCard.querySelector(".elements__like-button");
-  const newElementDeleteButton = newCard.querySelector(
-    ".elements__delete-button"
-  );
 
-  newElementTitle.textContent = elementName;
-  newElementImage.setAttribute("src", elementLink);
-  newElementImage.setAttribute("alt", elementName);
 
-  // механизм лайка
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("elements__like-button_active");
-  });
-
-  // удаление карточки
-  newElementDeleteButton.addEventListener("click", (evt) => {
-    newCard.remove();
-  });
-
-  // всплытие картинки из карточки
-  newElementImage.addEventListener("click", (evt) => {
-    popupImage.setAttribute("src", elementLink);
-    popupImage.setAttribute("alt", elementName);
-    popupCaption.textContent = elementName;
-    showPopup(popupOpenImage);
-  });
-
-  return newCard;
-}
 
 function submitAddElementForm(evt) {
   evt.preventDefault();
