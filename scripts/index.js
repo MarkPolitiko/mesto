@@ -119,8 +119,6 @@ export function showPopup(popup) {
 
 function closePopup(popup) {
   popup.classList.remove("popup_show");
-  document.removeEventListener("keydown", closePopupByEsc);
-  popup.removeEventListener("mousedown", closePopupByOverlay);
 }
 
 //закрытие через Esc
@@ -134,8 +132,7 @@ function closePopupByEsc(evt) {
 //закрытие через click вне формы
 function closePopupByOverlay(evt) {
   if (evt.target.classList.contains("popup_show")) {
-    const popup = document.querySelector(".popup_show");
-    closePopup(popup);
+    closePopup(evt.target);
   }
 }
 

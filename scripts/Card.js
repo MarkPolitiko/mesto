@@ -8,16 +8,16 @@ import {
 } from "./index.js";
 
 export default class Card {
-  constructor(title, image, template) {
+  constructor(title, image, templateSelector) {
     this._title = title;
     this._image = image;
-    this._template = template;
+    this._templateSelector = templateSelector;
     this._makeCardClick = makeCardClick;
   }
 
   _getTemplate() {
     const cardTemplate = document
-      .querySelector(this._template)
+      .querySelector(this._templateSelector)
       .content.querySelector(".elements__card")
       .cloneNode(true);
 
@@ -63,8 +63,7 @@ export default class Card {
 
   // удаление карточки
   _deleteCardButton() {
-    const newCard = this._cardPlace;
-    newCard.remove();
+    this._cardPlace.remove();
   }
 
   // всплытие картинки из карточки
