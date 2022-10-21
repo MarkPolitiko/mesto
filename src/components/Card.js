@@ -1,12 +1,3 @@
-/* import {
-  popupImage,
-  popupOpenImage,
-  popupCaption,
-  showPopup,
-  makeCardClick,
-
-} from "./index.js"; */
-
 // создание новой карточки
 
 export default class Card {
@@ -65,12 +56,8 @@ export default class Card {
   createCard() {
     this._cardPlace = this._getTemplate();
 
-    /* this._likeButton = this._cardPlace.querySelector(".elements__like-button");
-    this._cardDelete = this._cardPlace.querySelector(
-      ".elements__delete-button"
-    ); */
     this._popupImage = this._cardPlace.querySelector(".elements__image");
-    this._cardText = this._cardPlace.querySelector(".elements__title"); //поменял класс вместо elements__description
+    this._cardText = this._cardPlace.querySelector(".elements__title");
 
     this._popupImage.src = this._image;
     this._popupImage.alt = this._title;
