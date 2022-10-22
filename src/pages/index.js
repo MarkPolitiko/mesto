@@ -45,12 +45,9 @@ function handleAddElementButtonClick() {
 }
 
 // сохранение изменений профиля
-function submitFormChanges(formData) {
-  userInfo.setUserInfo(
-    formData.profileInputName,
-    formData.profileInputDescription
-  );
-  popupProfileEditWindow.close();
+function submitFormChanges (formData) {
+  userInfo.setUserInfo(formData.name, formData.description);
+  popupProfileEditWindow.closePopupWithForm();
 }
 
 function initiateCard(data) {
@@ -72,10 +69,9 @@ const addInitialElements = new Section(
 );
 
 // создание новой карточки
-
 function addCard(formData) {
   addInitialElements.addItem(initiateCard(formData));
-  popupAddElement.close();
+  popupAddElement.closePopupWithForm();
 }
 
 imageOpenedPopup.setEventListeners();
