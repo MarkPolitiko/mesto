@@ -14,9 +14,9 @@ export default class API {
   getInitialCards() {
     return fetch("https://mesto.nomoreparties.co/v1/cohort-52/cards", {
       headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
-      }
+        Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+        "Content-Type": "application/json",
+      },
     })
       .then(this._checkRes)
       .catch((err) => {
@@ -27,9 +27,9 @@ export default class API {
   getID() {
     return fetch("https://mesto.nomoreparties.co/v1/cohort-52/users/me", {
       headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
-      }
+        Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+        "Content-Type": "application/json",
+      },
     })
       .then(this._checkRes)
       .catch((err) => {
@@ -39,15 +39,15 @@ export default class API {
 
   editProfile() {
     return fetch("https://mesto.nomoreparties.co/v1/cohort-52/users/me", {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
+        Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: 'Jacques-Yves Cousteau',
-        about: 'Oceanographer, Filmmaker and Author'
-      })
+        name: "Jacques-Yves Cousteau",
+        about: "Oceanographer, Filmmaker and Author",
+      }),
     })
       .then(this._checkRes)
       .catch((err) => {
@@ -57,15 +57,15 @@ export default class API {
 
   postNewCard() {
     return fetch("https://mesto.nomoreparties.co/v1/cohort-52/cards", {
-      method: 'POST',
+      method: "POST",
       headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
+        Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: 'Grand Canyon',
-        link: 'https://stazztravel.com/wp-content/uploads/2020/01/03.jpg'
-      })
+        name: "Grand Canyon",
+        link: "https://stazztravel.com/wp-content/uploads/2020/01/03.jpg",
+      }),
     })
       .then(this._checkRes)
       .catch((err) => {
@@ -75,15 +75,15 @@ export default class API {
 
   deleteCard() {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-52/cards/${id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
+        Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: 'Grand Canyon',
-        link: 'https://stazztravel.com/wp-content/uploads/2020/01/03.jpg'
-      })
+        name: "Grand Canyon",
+        link: "https://stazztravel.com/wp-content/uploads/2020/01/03.jpg",
+      }),
     })
       .then(this._checkRes)
       .catch((err) => {
@@ -93,15 +93,15 @@ export default class API {
 
   addLike() {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-52/${id}/likes`, {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
+        Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: 'Grand Canyon',
-        link: 'https://stazztravel.com/wp-content/uploads/2020/01/03.jpg'
-      })
+        name: "Grand Canyon",
+        link: "https://stazztravel.com/wp-content/uploads/2020/01/03.jpg",
+      }),
     })
       .then(this._checkRes)
       .catch((err) => {
@@ -110,17 +110,20 @@ export default class API {
   }
 
   removeLike() {
-    return fetch(`https://mesto.nomoreparties.co/v1/cohort-52/cards/${id}/likes`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: 'Grand Canyon',
-        link: 'https://stazztravel.com/wp-content/uploads/2020/01/03.jpg'
-      })
-    })
+    return fetch(
+      `https://mesto.nomoreparties.co/v1/cohort-52/cards/${id}/likes`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "Grand Canyon",
+          link: "https://stazztravel.com/wp-content/uploads/2020/01/03.jpg",
+        }),
+      }
+    )
       .then(this._checkRes)
       .catch((err) => {
         console.log(err);
@@ -128,16 +131,19 @@ export default class API {
   }
 
   updateAvatar() {
-    return fetch("https://mesto.nomoreparties.co/v1/cohort-52/users/me/avatar", {
-      method: 'PATCH',
-      headers: {
-        Authorization: 'bf036392-6320-48e8-bc39-fe0e751cfef6',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        link: 'https://stazztravel.com/wp-content/uploads/2020/01/03.jpg'
-      })
-    })
+    return fetch(
+      "https://mesto.nomoreparties.co/v1/cohort-52/users/me/avatar",
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: "bf036392-6320-48e8-bc39-fe0e751cfef6",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          link: "https://stazztravel.com/wp-content/uploads/2020/01/03.jpg",
+        }),
+      }
+    )
       .then(this._checkRes)
       .catch((err) => {
         console.log(err);
