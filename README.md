@@ -32,4 +32,4 @@
 
 ### GH-pages
 
-* Проект можно найти по ссылке: https://markpolitiko.github.io/mesto
+* Проект можно найти по ссылке: https://markpolitiko.github.io/mesto/

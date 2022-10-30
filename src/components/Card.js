@@ -1,11 +1,18 @@
 // создание новой карточки
 
 export default class Card {
-  constructor(data, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, handleCardClick, myID) {
     this._title = data.name;
     this._image = data.link;
+    this._likes = data.likes;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._deleteCardClick = deleteCardClick;
+    this._myID = myID;
+    this._creator = data.owner._id;
+    this._addLikeToCard = addLikeToCard;
+    this._likeByMe = Boolean(this._likes.find((like) => like._id == myID));
+    this._cardLiked = Boolean(data.likes.length >= 0);
   }
 
   _getTemplate() {
@@ -21,12 +28,39 @@ export default class Card {
 
   // механизм лайка
   _clickLikeButton() {
-    this._likeButton.classList.toggle("elements__like-button_active");
+    this._addLikeToCard(this._likeByMe);
+    //this._likeButton.classList.toggle("elements__like-button_active");
+  }
+
+  addLike(number) {
+    this._likeButton.classList.add("elements__like-button_active");
+    this._cardPlace.querySelector(".elements__like-counter").textContent = number;
+    this._likeByMe = true;
+  }
+
+  removeLike(number) {
+    this._likeButton.classList.remove("elements__like-button_active");
+    this._cardPlace.querySelector(".elements__like-counter").textContent = number;
+    this._likeByMe = false;
   }
 
   // удаление карточки
-  _deleteCardButton() {
+  _handleDeleteBtn() {
+    this._deleteCardClick();
+  }
+
+  deleteCard() { // убрал нижнее подчеркивание
     this._cardPlace.remove();
+    this._cardPlace = null;
+  }
+/*   _deleteCardButton() {
+    this._cardPlace.remove();
+  } */
+
+  _removeDeleteBtn() {
+    if (this._creator !== this._myID) {
+      this._cardDelete.classList.add("elements__delete-button_remove");
+    }
   }
 
   // всплытие картинки из карточки
@@ -45,7 +79,7 @@ export default class Card {
     });
 
     this._cardDelete.addEventListener("click", () => {
-      this._deleteCardButton()
+      this._removeDeleteBtn()
     });
 
     this._popupImage.addEventListener("click", () => {
@@ -64,6 +98,15 @@ export default class Card {
     this._cardText.textContent = this._title;
 
     this._setEventListeners();
+    this._removeDeleteBtn();
+
+    if (this._cardLiked) {
+      this._cardPlace.querySelector(".elements__like-counter").textContent = this._likes.length;
+    }
+
+    if (this._likeByMe) {
+      this._likeButton.classList.add("elements__like-button_active");
+    }
 
     return this._cardPlace;
   }

@@ -19,11 +19,13 @@
       <main class="content">
         <section class="profile">
           <div class="profile__description">
-            <img
-              src="<%=require('./images/image.jpg')%>"
-              class="profile__image"
-              alt="Портрет Кусто"
-            />
+            <div class="profile__image-content">
+              <img
+                src="<%=require('./images/image.jpg')%>"
+                class="profile__image"
+                alt="Аватар пользователя"
+              />
+            </div>
             <div class="profile__status">
               <div class="profile__naming">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -172,6 +174,57 @@
           <figcaption class="popup__caption"></figcaption>
         </div>
       </div>
+
+      <div class="popup confirm-popup">
+        <div class="popup__input-container">
+          <legend class="popup__title">Вы уверены?</legend>
+          <button
+              class="popup__save-button popup__save-button_agree"
+              id="submit"
+              name="submit"
+              type="submit"
+            >
+              Да
+          </button>
+          <button
+            class="popup__close-button"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
+        </div>
+      </div>
+
+      <div class="popup popup_avatar-change">
+        <form class="popup__form popup__form_avatar-change" name="avatarChangeForm" novalidate>
+          <legend class="popup__title">Обновить аватар</legend>
+          <div class="popup__input-container">
+            <input
+              class="popup__input popup__input_type_link"
+              id="avatarLinkInput"
+              name="avatarLinkInput"
+              type="url"
+              placeholder="Ссылка на картинку"
+              required
+            />
+            <span
+              class="popup__input-error avatarLink-input-error popup__input-error_field_link"
+            ></span>
+          </div>
+          <button
+              class="popup__save-button popup__save-button_change-avatar"
+              id="submit"
+              name="submit"
+              type="submit"
+            >
+              Сохранить
+          </button>
+          <button
+            class="popup__close-button"
+            type="button"
+            aria-label="Закрыть"
+          ></button>
+        </form>
+      </div>
     </div>
 
     <template class="elements-template" id="elements-template">
@@ -180,11 +233,14 @@
         <button class="elements__delete-button" aria-label="Удалить"></button>
         <div class="elements__description">
           <h2 class="elements__title"></h2>
-          <button
-            class="elements__like-button"
-            type="button"
-            aria-label="Нравится"
-          ></button>
+          <div class="elements__like-container">
+            <button
+              class="elements__like-button"
+              type="button"
+              aria-label="Нравится"
+            ></button>
+            <p class="elements__like-counter"></p>
+          </div>
         </div>
       </article>
     </template>
