@@ -72,7 +72,7 @@ const popupAvatarEditWindow = new PopupWithForm(popupAvatarChange, (data) => {
     .then(
       (
         res //
-      ) => info.setUserInfo(res.name, res.information, res.avatarr)
+      ) => info.setUserInfo(res.name, res.information, res.avatar)
     )
     .then(() => popupAvatarEditWindow.close())
     .catch((err) => console.log(err.message))
@@ -84,7 +84,7 @@ const popupProfileEditWindow = new PopupWithForm(
   popupEditProfile,
   (data) => {
     api
-      .editProfileData({ name: data.name, about: data.description })
+      .editProfile({ name: data.name, about: data.description })
       .then((res) => {
         //
         info.setUserInfo(res.name, res.information, res.avatar);
@@ -139,7 +139,7 @@ function initiateCard(data, myID) {
     (likeByMe) => {
       if (!likeByMe) {
         api
-          .setLike(data._id)
+          .addLike(data._id)
           .then((res) => {
             newCard.addLike(res.likes.length);
           })
@@ -193,7 +193,7 @@ const popupAddElement = document.querySelector(".popup_open_add-window");
 
 const popupAddCard = new PopupWithForm(popupAddElement, (data) => {
   api
-    .addNewCard({ name: data.name, link: data.link })
+    .postNewCard({ name: data.name, link: data.link })
     .then((res) => {
       addInitialElements.addItem(initiateCard(res, res.owner._id), true);
     })

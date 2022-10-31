@@ -9,7 +9,13 @@ export default class Section {
       this._renderer(item, myID);
     });
   }
-  addItem(element) {
+  addItem(element) { // возможно, тут по-другому
     this._containerSelector.prepend(element);
+
+/*     if (first) {
+      this._containerSelector.prepend(element);
+    } else {
+      this._containerSelector.append(element);
+    } */
   }
 }

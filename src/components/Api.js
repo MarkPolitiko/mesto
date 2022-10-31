@@ -2,6 +2,7 @@ export default class API {
   constructor(config) {
     this._url = config.url;
     this._headers = config.headers;
+    //this._token = config.token;
   }
 
   _checkRes(res) {
@@ -73,7 +74,7 @@ export default class API {
       });
   }
 
-  deleteCard() {
+  deleteCard(id) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-52/cards/${id}`, {
       method: "DELETE",
       headers: {
@@ -91,7 +92,7 @@ export default class API {
       });
   }
 
-  addLike() {
+  addLike(id) {
     return fetch(`https://mesto.nomoreparties.co/v1/cohort-52/${id}/likes`, {
       method: "PUT",
       headers: {
@@ -109,7 +110,7 @@ export default class API {
       });
   }
 
-  removeLike() {
+  removeLike(id) {
     return fetch(
       `https://mesto.nomoreparties.co/v1/cohort-52/cards/${id}/likes`,
       {
