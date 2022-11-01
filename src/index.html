@@ -195,39 +195,44 @@
       </div>
 
       <div class="popup popup_avatar-change">
-        <form
-          class="popup__form popup__form_avatar-change"
-          name="avatarChangeForm"
-          novalidate
-        >
+        <div class="popup__content">
           <legend class="popup__title">Обновить аватар</legend>
-          <div class="popup__input-container">
-            <input
-              class="popup__input popup__input_type_link"
-              id="avatarLinkInput"
-              name="avatarLinkInput"
-              type="url"
-              placeholder="Ссылка на картинку"
-              required
-            />
-            <span
-              class="popup__input-error avatarLink-input-error popup__input-error_field_link"
-            ></span>
-          </div>
-          <button
-            class="popup__save-button popup__save-button_change-avatar"
-            id="changeAvatar"
-            name="changeAvatar"
-            type="submit"
+          <form
+            class="popup__form popup__form_avatar-change"
+            name="avatarChangeForm"
+            novalidate
           >
-            Сохранить
-          </button>
-          <button
-            class="popup__close-button"
-            type="button"
-            aria-label="Закрыть"
-          ></button>
-        </form>
+            <div class="popup__input-container">
+              <input
+                class="popup__input popup__input_type_link"
+                id="avatarLinkInput"
+                name="link"
+                type="url"
+                placeholder="Ссылка на картинку"
+                minlength="2"
+                maxlength="30"
+                title="Длина поля должна быть 2 и более символов и менее или равно 30"
+                required
+              />
+              <span
+                class="popup__input-error avatarLink-input-error popup__input-error_field_link"
+              ></span>
+            </div>
+            <button
+              class="popup__save-button popup__save-button_change-avatar"
+              id="changeAvatar"
+              name="changeAvatar"
+              type="submit"
+            >
+              Сохранить
+            </button>
+            <button
+              class="popup__close-button"
+              type="button"
+              aria-label="Закрыть"
+            ></button>
+          </form>
+        </div>
       </div>
     </div>
 

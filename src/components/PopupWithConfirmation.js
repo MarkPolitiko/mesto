@@ -7,7 +7,7 @@ export default class PopupWithConfirmation extends Popup {
     this._option = option;
   }
 
-  open(data) {
+/*   open(data) {
     super.open();
     this._data = data;
   }
@@ -17,5 +17,5 @@ export default class PopupWithConfirmation extends Popup {
     this._btnAgree.addEventListener("click", () => {
       this._option(this._data);
     });
-  }
+  } */
 }
