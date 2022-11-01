@@ -85,17 +85,18 @@ const userInfo = new UserInfo('.profile__title', '.profile__subtitle', '.profile
 
 /* const userInfo = new UserInfo({
   name: ".profile__title",
-  information: ".profile__subtitle",
+  about: ".profile__subtitle",
   avatar: ".profile__image",
 }); */
 
 //
 api.getID()
 .then((data) => {
-  const information = data;
-  userInfo.setUserInfo(information);
-  userInfo.setAvaInfo(information.avatar);
-  userInfo.setID(information._id);
+  console.log(data);
+  const info = data;
+  userInfo.setUserInfo(info);
+  userInfo.setAvaInfo(info.avatar);
+  userInfo.setID(info._id);
 })
 
 //
@@ -165,9 +166,9 @@ function handleChangeAvatarClick() {
 // открытие формы для изменения профиля
 function handleEditProfileButtonClick() {
   popupProfileEditWindow.open();
-  /* const userInputs = userInfo.getUserInfo();
+/*   const userInputs = userInfo.getUserInfo();
   profileInputName.value = userInputs.name;
-  profileInputDescription.value = userInputs.information; */
+  profileInputDescription.value = userInputs.about; */
   popupProfileEditWindow.setInputs(userInfo.getUserInfo());
   editFormValidator.resetValidation();
 }

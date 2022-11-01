@@ -1,7 +1,7 @@
 // создание новой карточки
 
 export default class Card {
-  constructor({name, link}, templateSelector, handleCardClick/* , deleteCardClick, myID, addLikeToCard */) {
+  constructor({name, link}, templateSelector, handleCardClick, cardLiked/* , deleteCardClick, myID, addLikeToCard */) {
     this._title = name;
     this._image = link;
     //this._likes = data.likes;

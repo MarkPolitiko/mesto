@@ -8,7 +8,7 @@ export default class UserInfo {
   getUserInfo() {
     return {
       name: this._name.textContent,
-      information: this._information.textContent, // точно information???
+      about: this._information.textContent, // точно information???
     };
   }
 
@@ -17,8 +17,9 @@ export default class UserInfo {
   }
 
   setUserInfo(data) {
+    //console.log(data);
     this._name.textContent = data.name;
-    this._information.textContent = data.information;
+    this._information.textContent = data.about;
   }
 
   setAvaInfo(avatar) {

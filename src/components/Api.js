@@ -4,7 +4,7 @@ export default class API {
     this._headers = headers;
   }
 
-  async _processFetch(track, method = "GET", body) {
+  async _processFetch(path, method = "GET", body) {
     const params = { ...this._headers, method };
     if(body) {
       if(typeof body === "string") {
@@ -15,12 +15,12 @@ export default class API {
       }
     }
     //const json = await res.json()
-    const res = await fetch(this._url + track, params)
-    //return res.ok ? await res.json() : Promise.reject(`Ошибка: ${res.status}`)
-    if (res.ok) {
+    const res = await fetch(this._url + path, params)
+    return res.ok ? await res.json() : Promise.reject(`Ошибка: ${res.status}`)
+/*     if (res.ok) {
       res.json();
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(`Ошибка: ${res.status}`); */
   }
 
   getID() {
