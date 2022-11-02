@@ -18,7 +18,7 @@ export default class API {
     return res.ok ? await res.json() : Promise.reject(`Ошибка: ${res.status}`)
   }
 
-  getID() {
+  getProfileInfo() {
     return this._processFetch('/users/me', 'GET')
   }
 

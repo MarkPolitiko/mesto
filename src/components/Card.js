@@ -1,7 +1,7 @@
 // создание новой карточки
 
 export default class Card {
-  constructor(data, myID, templateSelector, handleCardClick, deleteCardClick, userInfo, addLikeToCard, deleteCardLike, deleteCardConfirmation) {
+  constructor(data, myID, templateSelector, handleCardClick, deleteCardClick, addLikeToCard) {
     this._title = data.name;
     this._image = data.link;
     this._likes = data.likes;
@@ -16,6 +16,7 @@ export default class Card {
   }
 
   _getTemplate() {
+    //const elementCard = document.querySelector(".elements__card")
     const cardTemplate = document
       .querySelector(this._templateSelector)
       .content.querySelector(".elements__card")
@@ -94,7 +95,7 @@ export default class Card {
     this._setEventListeners();
     this._removeDeleteBtn();
 
-    if(!!this._myLike) { // отавить !! ?
+    if(this._myLike) { // отавить !! ?
       this._likeButton.classList.add("elements__like-button_active");
     }
 

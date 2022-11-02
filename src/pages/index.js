@@ -25,6 +25,9 @@ const popupAddElement = document.querySelector(".popup_open_add-window");
 const usernameInput = document.querySelector(".profile__title");
 const aboutInput = document.querySelector(".profile__subtitle");
 const userAvatar = document.querySelector(".profile__image");
+const popupConfirmEl = document.querySelector(".popup-confirm");
+const elements = document.querySelector(".elements");
+const elementsTemplate = document.querySelector(".elements-template");
 
 const config = {
   formSelector: ".popup__form",
@@ -65,7 +68,7 @@ api.removeLike();
 api.updateAvatar(); */
 
 //
-const confirmationPopup = new PopupWithConfirmation(".popup-confirm", ({id, option}) => {
+const confirmationPopup = new PopupWithConfirmation(popupConfirmEl, ({id, option}) => {
   api.deleteCard(id)
       .then(() => {
         option(); // ИЛИ ПЕРЕИМЕНОВАТЬ?
@@ -87,7 +90,7 @@ const imageOpenedPopup = new PopupWithImage(imageOpened);
 
 //
 const userInfo = new UserInfo({
-  username: usernameInput,
+  name: usernameInput,
   about: aboutInput,
   avatar: userAvatar,
 })
@@ -109,7 +112,7 @@ const popupAvatarEditWindow = new PopupWithForm(popupAvatarChange, (data) => {
 const popupProfileEditWindow = new PopupWithForm(
   popupEditProfile, (data) => { // можно заменить на values?
     //popupEditProfile.renderLoading(true)
-    api.patchProfile({username: data.name, about: data.about})
+    api.patchProfile({name: data.name, about: data.about})
       .then((res) => {
         userInfo.setUserInfo(res.name, res.about, res.avatar);
         popupProfileEditWindow.close()
@@ -179,7 +182,7 @@ function handleAddElementButtonClick() {
   function initiateCard(data, myID/* {name, link} */) {
   const newCard = new Card(
     /* { name, link } */data,
-    ".elements-template",
+    elementsTemplate,
     imageOpenedPopup.open.bind(imageOpenedPopup),
     () => {
       confirmationPopup.open({
@@ -203,26 +206,24 @@ function handleAddElementButtonClick() {
       }
     },
     myID,
-    ".elements"
-
-  );
+    elements);
   return newCard.createCard();
 }
 
 //
 const addInitialElements = new Section(
-    {/* items: data, */
+    {
       renderer: (data, myID) =>
         addInitialElements.addItem(initiateCard(data, myID)),
     },
-    ".elements" //photos
+    elements
 );
 
 
-  Promise.all([api.getID(), api.getInitialCards()])
-  .then(([values, initialCards]) => {
-    const myID = values._id;
-    userInfo.setUserInfo(values.name, values.about, values.avatar);
+  Promise.all([api.getProfileInfo(), api.getInitialCards()])
+  .then(([data, initialCards]) => { // можно ли values?
+    const myID = data._id;
+    userInfo.setUserInfo(data.name, data.about, data.avatar);
     addInitialElements.renderItems(initialCards, myID);
   })
   .catch((err) => console.log(err));
