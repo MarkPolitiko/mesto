@@ -60,7 +60,7 @@ api.removeLike();
 api.updateAvatar(); */
 
 //
-const confirmationPopup = new PopupWithConfirmation(confirmPopup, (item) => {
+const confirmationPopup = new PopupWithConfirmation(".confirm-popup", (item) => {
   confirmationPopup.renderLoading(true)
   api.deleteCard(item.cardId)
       .then(() => {
@@ -77,7 +77,6 @@ const confirmationPopup = new PopupWithConfirmation(confirmPopup, (item) => {
 
 //
 const imageOpenedPopup = new PopupWithImage(imageOpened);
-const confirmPopup = new PopupWithConfirmation(".confirm-popup");
 const userInfo = new UserInfo('.profile__title', '.profile__subtitle', '.profile__image');
 
 //
