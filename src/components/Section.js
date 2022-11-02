@@ -4,18 +4,17 @@ export default class Section {
     this._renderer = renderer;
     this._containerSelector = document.querySelector(containerSelector);
   }
-  renderItems(/* data, myId */) {
-    /* data */this._items.forEach((item) => {
-      this./* _renderer */addItem(item)
+  renderItems(data, myID) {
+    data.forEach((item) => {
+      this._renderer(item, myID)
     });
   }
 
-  addItem(item/* element */) { // возможно, тут по-другому
-    /* this._containerSelector.prepend(element); */
-
-    if (item) {
-      const newItem = this._renderer(item);
-      this._containerSelector.prepend(newItem);
+  addItem(element, first) { // ЗАМЕНИТЬ FIRST?
+    if (first) {
+      this._containerSelector.prepend(element);
+    } else {
+      this._containerSelector.append(element); // ОНО НУЖНО?
     }
   }
 }

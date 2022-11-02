@@ -14,13 +14,8 @@ export default class API {
         params.body = JSON.stringify(body);
       }
     }
-    //const json = await res.json()
     const res = await fetch(this._url + path, params)
     return res.ok ? await res.json() : Promise.reject(`Ошибка: ${res.status}`)
-/*     if (res.ok) {
-      res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`); */
   }
 
   getID() {
@@ -31,7 +26,7 @@ export default class API {
     return this._processFetch('/cards', 'GET')
   }
 
-  editProfile(values) {
+  patchProfile(values) {
     return this._processFetch('/users/me', 'PATCH', values) // или заменить data на values?
   }
 
@@ -39,19 +34,19 @@ export default class API {
     return this._processFetch('/cards', 'POST', values)
   }
 
-  deleteCard() {
+  deleteCard(id) {
     return this._processFetch('/cards' + id, 'DELETE') // or '/cards' + id  ?
   }
 
-  addLike(id) {
+  putLike(id) {
     return this._processFetch('/cards' + id + '/likes', 'PUT')
   }
 
-  removeLike(id) {
+  deleteLike(id) {
     return this._processFetch('/cards' + id + '/likes', 'DELETE')
   }
 
-  updateAvatar(avatar) {
+  patchAvatar(avatar) {
     return this._processFetch(`/users/me/avatar`, 'PATCH', avatar)
   }
 }
