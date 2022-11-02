@@ -1,21 +1,31 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithConfirmation extends Popup {
-  constructor(popupSelector, option) {
+  constructor(popupSelector, submitForm/* , option */) {
     super(popupSelector);
-    this._btnAgree = this._popup.querySelector(".popup__save-button");
-    this._option = option;
+    this._popupForm = this._popup.querySelector(".popup__form"); //del _
+    this._submitForm = submitForm;
+    this._btnAgree = this._popupForm.querySelector(".popup__save-button"); // вместо this._popup
   }
 
-/*   open(data) {
+  open(values) {
     super.open();
-    this._data = data;
+    this._values = values;
   }
 
   setEventListeners() {
     super.setEventListeners();
-    this._btnAgree.addEventListener("click", () => {
-      this._option(this._data);
+    this.popup.addEventListener("submit", (evt) => {
+      evt.preventDefault();
+      this._submitForm(this._values);
     });
-  } */
+  }
+
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._popupSaveBtn.textContent = "Сохранение...";
+    } else {
+      this._popupSaveBtn.textContent = "Сохранить";
+    }
+  }
 }
