@@ -5,27 +5,17 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._submitForm = submitForm;
     this._popupForm = this._popup.querySelector(".popup__form");
-    this._inputList = Array.from(this._popupForm.querySelectorAll(".popup__input"));
+    this._inputList = Array.from(
+      this._popupForm.querySelectorAll(".popup__input")
+    );
   }
 
-  _getInputValues() {
+  #getInputValues() {
     return this._inputList.reduce(function (formData, input) {
       formData[input.name] = input.value;
       return formData;
-    }, {})
+    }, {});
   }
-
-  /* setInputs(values) {
-    this._inputList.forEach(function (input) {
-      if (values[input.name]) {
-        input.value = values[input.name];
-      }
-    });
-  } */
-
-  /* returnFormElement() {
-    return this._popupForm;
-  } */
 
   close() {
     super.close();
@@ -34,16 +24,16 @@ export default class PopupWithForm extends Popup {
 
   setEventListeners() {
     super.setEventListeners();
-    this./* popup */_popupForm.addEventListener("submit", (evt) => { //del
-      this.renderLoading(true);
+
+    this._popupForm.addEventListener("submit", (evt) => {
+      this.renderSaving(true);
       evt.preventDefault();
-      this._submitForm(this._getInputValues());
-      //this.closePopupWithForm();
+      this._submitForm(this.#getInputValues());
     });
   }
 
-  renderLoading(isLoading) {
-    if (isLoading) {
+  renderSaving(isSaving) {
+    if (isSaving) {
       this._popupSaveBtn.textContent = "Сохранение...";
     } else {
       this._popupSaveBtn.textContent = "Сохранить";

@@ -1,11 +1,18 @@
 // создание новой карточки
 
 export default class Card {
-  constructor(data, myID, templateSelector, handleCardClick, deleteCardClick, addLikeToCard) {
+  constructor(
+    data,
+    templateSelector,
+    handleCardClick,
+    deleteCardClick,
+    addLikeToCard,
+    myID
+  ) {
     this._title = data.name;
     this._image = data.link;
     this._likes = data.likes;
-    this._myID = myID
+    this._myID = myID;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
     this._deleteCardClick = deleteCardClick;
@@ -15,8 +22,7 @@ export default class Card {
     this._likeCounter = Boolean(data.likes.length >= 0);
   }
 
-  _getTemplate() {
-    //const elementCard = document.querySelector(".elements__card")
+  #getTemplate() {
     const cardTemplate = document
       .querySelector(this._templateSelector)
       .content.querySelector(".elements__card")
@@ -26,16 +32,8 @@ export default class Card {
   }
 
   // всплытие картинки из карточки
-  _openImage() {
+  #openImage() {
     this._handleCardClick(this._image, this._title);
-  }
-
-  _clickDeleteBtn() {
-    this._deleteCardClick();
-  }
-
-  _clickLikeButton() {
-    this._addLikeToCard(this._myLike);
   }
 
   addLike(value) {
@@ -57,49 +55,54 @@ export default class Card {
     this._cardPlace = null;
   }
 
-  _setEventListeners() {
-    this._likeButton = this._cardPlace.querySelector(".elements__like-button");
-    this._cardDelete = this._cardPlace.querySelector(".elements__delete-button");
-    this._popupImage = this._cardPlace.querySelector(".elements__image");
-
-    this._likeButton.addEventListener("click", () => {
-      this._handleCardClick(this);
-    });
-
-    this._popupImage.addEventListener("click", () => {
-      this._openImage();
-    });
-
-    this._deleteButton.addEventListener('click', () => {
-      this._clickDeleteBtn(); // может, просто без метода? this._deleteCardClick();
-    });
-  }
-
-  _removeDeleteBtn() {
+  #removeDeleteBtn() {
     if (this._creator !== this._myID) {
-      this._deleteButton.classList.add("elements__delete-button_remove");
+      this._cardDelete.classList.add("elements__delete-button_remove");
     }
   }
 
+  #setEventListeners() {
+    this._likeButton = this._cardPlace.querySelector(".elements__like-button");
+    this._cardDelete = this._cardPlace.querySelector(
+      ".elements__delete-button"
+    );
+    this._popupImage = this._cardPlace.querySelector(".elements__image");
+
+    this._likeButton.addEventListener("click", () => {
+      this._addLikeToCard(this._myLike);
+    });
+
+    this._popupImage.addEventListener("click", () => {
+      this.#openImage();
+    });
+
+    this._cardDelete.addEventListener("click", () => {
+      this._deleteCardClick();
+    });
+  }
+
   createCard() {
-    this._cardPlace = this._getTemplate();
+    this._cardPlace = this.#getTemplate();
 
     this._popupImage = this._cardPlace.querySelector(".elements__image");
     this._cardText = this._cardPlace.querySelector(".elements__title");
-    this._cardLikesNmbr = this._cardPlace.querySelector(".elements__like-counter");
+    this._cardLikesNmbr = this._cardPlace.querySelector(
+      ".elements__like-counter"
+    );
 
     this._popupImage.src = this._image;
     this._popupImage.alt = this._title;
     this._cardText.textContent = this._title;
 
-    this._setEventListeners();
-    this._removeDeleteBtn();
+    this.#setEventListeners();
+    this.#removeDeleteBtn();
 
-    if(this._myLike) { // отавить !! ?
+    if (this._myLike) {
+      // отавить !! ?
       this._likeButton.classList.add("elements__like-button_active");
     }
 
-    if(this._likeCounter) {
+    if (this._likeCounter) {
       this._cardLikesNmbr.textContent = this._likes.length;
     }
 

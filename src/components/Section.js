@@ -6,15 +6,13 @@ export default class Section {
   }
   renderItems(data, myID) {
     data.forEach((item) => {
-      this._renderer(item, myID)
+      this._renderer(item, myID);
     });
   }
 
-  addItem(element, first) { // ЗАМЕНИТЬ FIRST?
-    if (first) {
-      this._containerSelector.prepend(element);
-    } else {
-      this._containerSelector.append(element); // ОНО НУЖНО?
+  addItem(element) {
+    {
+      this._containerSelector.prepend(element)
     }
   }
 }
