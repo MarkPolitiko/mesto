@@ -1,14 +1,11 @@
 export default class API {
-  #url;
-  #headers;
-
   constructor({ url, ...headers }) {
-    this.#url = url;
-    this.#headers = headers;
+    this._url = url;
+    this._headers = headers;
   }
 
-  async #processFetch(track, method = "GET", body) {
-    const params = { ...this.#headers, method };
+  async _processFetch(track, method = "GET", body) {
+    const params = { ...this._headers, method };
     if (body) {
       if (typeof body === "string") {
         params.body = body;
@@ -16,7 +13,7 @@ export default class API {
         params.body = JSON.stringify(body);
       }
     }
-    const res = await fetch(this.#url + track, params);
+    const res = await fetch(this._url + track, params);
     if (res.ok) {
       return res.json()
     }
@@ -24,34 +21,34 @@ export default class API {
   }
 
   getProfileInfo() {
-    return this.#processFetch("/users/me", "GET");
+    return this._processFetch("/users/me", "GET");
   }
 
   getInitialCards() {
-    return this.#processFetch("/cards", "GET");
+    return this._processFetch("/cards", "GET");
   }
 
   patchProfile(values) {
-    return this.#processFetch("/users/me", "PATCH", values);
+    return this._processFetch("/users/me", "PATCH", values);
   }
 
   postNewCard(values) {
-    return this.#processFetch("/cards", "POST", values);
+    return this._processFetch("/cards", "POST", values);
   }
 
   deleteCard(id) {
-    return this.#processFetch(`/cards/${id}`, "DELETE");
+    return this._processFetch(`/cards/${id}`, "DELETE");
   }
 
   putLike(id) {
-    return this.#processFetch(`/cards/${id}/likes`, "PUT");
+    return this._processFetch(`/cards/${id}/likes`, "PUT");
   }
 
   deleteLike(id) {
-    return this.#processFetch(`/cards/${id}/likes`, "DELETE");
+    return this._processFetch(`/cards/${id}/likes`, "DELETE");
   }
 
   patchAvatar(values) {
-    return this.#processFetch(`/users/me/avatar`, "PATCH", values);
+    return this._processFetch(`/users/me/avatar`, "PATCH", values);
   }
 }

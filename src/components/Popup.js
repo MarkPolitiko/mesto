@@ -1,7 +1,6 @@
 export default class Popup {
   constructor(popupSelector) {
-    this._popup = popupSelector;
-    this._popupSaveBtn = this._popup.querySelector(".popup__save-button");
+    this._popup = document.querySelector(popupSelector);
   }
 
   open() {

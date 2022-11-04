@@ -63,7 +63,7 @@
             <div class="popup__input-container">
               <input
                 class="popup__input popup__input_type_name"
-                id="name"
+                id="nameInput"
                 name="name"
                 type="text"
                 placeholder="Имя"
@@ -73,13 +73,13 @@
                 required
               />
               <span
-                class="popup__input-error name-input-error popup__input-error_field_name"
+                class="popup__input-error nameInput-error popup__input-error_field_name"
               ></span>
             </div>
             <div class="popup__input-container">
               <input
                 class="popup__input popup__input_type_description"
-                id="description"
+                id="descriptionInput"
                 name="about"
                 type="text"
                 placeholder="Род деятельности"
@@ -89,7 +89,7 @@
                 required
               />
               <span
-                class="popup__input-error description-input-error popup__input-error_field_description"
+                class="popup__input-error descriptionInput-error popup__input-error_field_description"
               ></span>
             </div>
             <button
@@ -176,21 +176,23 @@
       </div>
 
       <div class="popup popup-confirm">
-        <div class="popup__input-container">
-          <legend class="popup__title">Вы уверены?</legend>
-          <button
-            class="popup__save-button popup__save-button_agree"
-            id="submit"
-            name="submit"
-            type="submit"
-          >
-            Да
-          </button>
-          <button
-            class="popup__close-button"
-            type="button"
-            aria-label="Закрыть"
-          ></button>
+        <div class="popup__content">
+          <div class="popup__input-container ">
+            <legend class="popup__title">Вы уверены?</legend>
+            <button
+              class="popup__save-button popup__save-button_agree"
+              id="submit"
+              name="submit"
+              type="submit"
+            >
+              Да
+            </button>
+            <button
+              class="popup__close-button"
+              type="button"
+              aria-label="Закрыть"
+            ></button>
+          </div>
         </div>
       </div>
 
@@ -205,14 +207,14 @@
             <div class="popup__input-container">
               <input
                 class="popup__input popup__input_type_link"
-                id="avatar-link"
-                name="avatarLink"
+                id="avatarInput"
+                name="avatarInput"
                 type="url"
                 placeholder="Ссылка на картинку"
                 required
               />
               <span
-                class="popup__input-error avatarLink-input-error popup__input-error_field_link"
+                class="popup__input-error avatarInput-error popup__input-error_field_link"
               ></span>
             </div>
             <button

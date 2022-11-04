@@ -17,16 +17,8 @@ const profileInputDescription = document.querySelector(
 const profileEditButton = document.querySelector(".profile__edit-button");
 const popupAddForm = document.querySelector(".popup__form_add_element");
 const profileAddButton = document.querySelector(".profile__add-button");
-const imageOpened = document.querySelector(".popup_image_open");
 const profileAvatar = document.querySelector(".profile__image");
 const profileAvatarForm = document.querySelector(".popup__form_avatar-change");
-const popupAvatarChange = document.querySelector(".popup_avatar-change");
-const popupEditProfile = document.querySelector(".popup_open_edit-window");
-const popupAddElement = document.querySelector(".popup_open_add-window");
-const usernameInput = document.querySelector(".profile__title");
-const aboutInput = document.querySelector(".profile__subtitle");
-const popupConfirmEl = document.querySelector(".popup-confirm");
-const elements = document.querySelector(".elements");
 
 const config = {
   formSelector: ".popup__form",
@@ -45,38 +37,37 @@ const api = new API({
   },
 });
 
-const imageOpenedPopup = new PopupWithImage(imageOpened);
+const imageOpenedPopup = new PopupWithImage(".popup_image_open");
 
 const userInfo = new UserInfo({
-  name: usernameInput,
-  about: aboutInput,
-  avatar: profileAvatar,
+  nameSelector: ".profile__title",
+  aboutSelector: ".profile__subtitle",
+  avatarSelector: ".profile__image",
 });
 
-const popupAvatarEditWindow = new PopupWithForm(popupAvatarChange, (data) => {
+const popupAvatarEditWindow = new PopupWithForm(".popup_avatar-change", (data) => {
   api
-    .patchAvatar({ avatar: data.avatarLink })
-    .then((res) => {
-      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    .patchAvatar({ avatar: data.avatarInput })
+    .then((formData) => {
+      userInfo.setUserInfo(formData);
       popupAvatarEditWindow.close();
     })
     .catch((err) => console.error(err))
     .finally(() => popupAvatarEditWindow.renderSaving(false));
 });
 
-const popupProfileEditWindow = new PopupWithForm(popupEditProfile, (data) => {
+const popupProfileEditWindow = new PopupWithForm(".popup_open_edit-window", (data) => {
   api
     .patchProfile({ name: data.name, about: data.about })
-    .then((res) => {
-      userInfo.setUserInfo(res.name, res.about, res.avatar);
+    .then((formData) => {
+      userInfo.setUserInfo(formData);
       popupProfileEditWindow.close();
     })
     .catch((err) => console.error(err))
     .finally(() => popupProfileEditWindow.renderSaving(false));
 });
 
-const popupAddCard = new PopupWithForm(popupAddElement, (data) => {
-  popupAddCard.renderSaving(true);
+const popupAddCard = new PopupWithForm(".popup_open_add-window", (data) => {
   api
     .postNewCard({ name: data.name, link: data.link })
     .then((res) => {
@@ -88,7 +79,7 @@ const popupAddCard = new PopupWithForm(popupAddElement, (data) => {
 });
 
 const confirmationPopup = new PopupWithConfirmation(
-  popupConfirmEl,
+  ".popup-confirm",
   ({ id, option }) => {
     api
       .deleteCard(id)
@@ -145,7 +136,7 @@ const initiateCard = (data, myID) => {
       }
     },
     myID,
-    elements
+    ".elements"
   );
   return newItem.createCard();
 };
@@ -155,14 +146,14 @@ const addInitialElements = new Section(
     renderer: (data, myID) =>
       addInitialElements.addItem(initiateCard(data, myID)),
   },
-  elements
+  ".elements"
 );
 
 Promise.all([api.getProfileInfo(), api.getInitialCards()])
-  .then(([data, initialCards]) => {
-    const myID = data._id;
-    userInfo.setUserInfo(data.name, data.about, data.avatar);
-    addInitialElements.renderItems(initialCards, myID);
+  .then(([formData, cardsData]) => {
+    const myID = formData._id;
+    userInfo.setUserInfo(formData);
+    addInitialElements.renderItems(cardsData, myID );
   })
   .catch((err) => console.error(err));
 

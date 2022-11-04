@@ -1,8 +1,6 @@
 .profile__image-content {
-  max-width: 168.75px;
+  max-width: 120px;
   max-height: 120px;
-  border-radius: 50%;
-  margin-right: 30px;
   background-image: url(../../../images/EditAva.png);
   background-size: 26px 26px;
   background-repeat: no-repeat;

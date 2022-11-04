@@ -3,7 +3,7 @@
 export default class Card {
   constructor(
     data,
-    templateSelector,
+    templateEl,
     handleCardClick,
     deleteCardClick,
     addLikeToCard,
@@ -13,7 +13,7 @@ export default class Card {
     this._image = data.link;
     this._likes = data.likes;
     this._myID = myID;
-    this._templateSelector = templateSelector;
+    this._templateEl = templateEl;
     this._handleCardClick = handleCardClick;
     this._deleteCardClick = deleteCardClick;
     this._addLikeToCard = addLikeToCard;
@@ -22,9 +22,9 @@ export default class Card {
     this._likeCounter = Boolean(data.likes.length >= 0);
   }
 
-  #getTemplate() {
+  _getTemplate() {
     const cardTemplate = document
-      .querySelector(this._templateSelector)
+      .querySelector(this._templateEl)
       .content.querySelector(".elements__card")
       .cloneNode(true);
 
@@ -32,7 +32,7 @@ export default class Card {
   }
 
   // всплытие картинки из карточки
-  #openImage() {
+  _openImage() {
     this._handleCardClick(this._image, this._title);
   }
 
@@ -55,13 +55,13 @@ export default class Card {
     this._cardPlace = null;
   }
 
-  #removeDeleteBtn() {
+  _removeDeleteBtn() {
     if (this._creator !== this._myID) {
       this._cardDelete.classList.add("elements__delete-button_remove");
     }
   }
 
-  #setEventListeners() {
+  _setEventListeners() {
     this._likeButton = this._cardPlace.querySelector(".elements__like-button");
     this._cardDelete = this._cardPlace.querySelector(
       ".elements__delete-button"
@@ -73,7 +73,7 @@ export default class Card {
     });
 
     this._popupImage.addEventListener("click", () => {
-      this.#openImage();
+      this._openImage();
     });
 
     this._cardDelete.addEventListener("click", () => {
@@ -82,7 +82,7 @@ export default class Card {
   }
 
   createCard() {
-    this._cardPlace = this.#getTemplate();
+    this._cardPlace = this._getTemplate();
 
     this._popupImage = this._cardPlace.querySelector(".elements__image");
     this._cardText = this._cardPlace.querySelector(".elements__title");
@@ -94,11 +94,10 @@ export default class Card {
     this._popupImage.alt = this._title;
     this._cardText.textContent = this._title;
 
-    this.#setEventListeners();
-    this.#removeDeleteBtn();
+    this._setEventListeners();
+    this._removeDeleteBtn();
 
     if (this._myLike) {
-      // отавить !! ?
       this._likeButton.classList.add("elements__like-button_active");
     }
 
