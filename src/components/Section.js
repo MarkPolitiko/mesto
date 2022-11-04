@@ -9,9 +9,11 @@ export default class Section {
     });
   }
 
-  addItem(element) {
-    {
+  addItem(element, newEl) {
+    if (newEl) {
       this._container.prepend(element);
+    } else {
+      this._container.append(element);
     }
   }
 }
